@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Atenditmentos</title>
+    <title>Gerenciamento de Atendimentos</title>
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -97,6 +97,9 @@
         h1, h2 {
             color: #fff;
         }
+        h2 {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -153,6 +156,7 @@
     </div>
 
     <script>
+        // Função para calcular a porcentagem
         function calcularPorcentagem() {
             const atendimentos = parseInt(document.getElementById('atendimentos').value);
             const registros = parseInt(document.getElementById('registros').value);
@@ -193,6 +197,7 @@
             document.getElementById('porcentagem').innerText = '0%';
             
             atualizarHistoricoMensal(atendimentos, registros);
+            salvarDadosLocais();
         }
 
         function atualizarHistoricoMensal(atendimentos, registros) {
@@ -220,7 +225,28 @@
         function limparTudo() {
             document.getElementById('tabela-diaria').innerHTML = '';
             document.getElementById('tabela-mensal').innerHTML = '';
+            localStorage.removeItem('dadosHistoricos');
         }
+
+        function salvarDadosLocais() {
+            const tabelaDiaria = document.getElementById('tabela-diaria').innerHTML;
+            const tabelaMensal = document.getElementById('tabela-mensal').innerHTML;
+            const dados = {
+                tabelaDiaria,
+                tabelaMensal
+            };
+            localStorage.setItem('dadosHistoricos', JSON.stringify(dados));
+        }
+
+        function carregarDadosLocais() {
+            const dadosSalvos = JSON.parse(localStorage.getItem('dadosHistoricos'));
+            if (dadosSalvos) {
+                document.getElementById('tabela-diaria').innerHTML = dadosSalvos.tabelaDiaria;
+                document.getElementById('tabela-mensal').innerHTML = dadosSalvos.tabelaMensal;
+            }
+        }
+
+        window.onload = carregarDadosLocais;
     </script>
 </body>
 </html>
