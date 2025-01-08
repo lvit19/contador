@@ -153,7 +153,75 @@
     </div>
 
     <script>
-        // Funções já fornecidas no código original
+         // Função para calcular a porcentagem
+        function calcularPorcentagem() {
+            const atendimentos = parseInt(document.getElementById('atendimentos').value);
+            const registros = parseInt(document.getElementById('registros').value);
+            let porcentagem = 0;
+            
+            if (atendimentos > 0) {
+                porcentagem = (registros / atendimentos) * 100;
+            }
+
+            document.getElementById('porcentagem').innerText = porcentagem.toFixed(2) + '%';
+        }
+
+        function adicionarAtendimento() {
+            const atendimentosField = document.getElementById('atendimentos');
+            atendimentosField.value = parseInt(atendimentosField.value) + 1;
+            calcularPorcentagem();
+        }
+
+        function adicionarRegistro() {
+            const registrosField = document.getElementById('registros');
+            registrosField.value = parseInt(registrosField.value) + 1;
+            calcularPorcentagem();
+        }
+
+        function armazenarDados() {
+            const dataAtual = new Date().toLocaleDateString();
+            const atendimentos = parseInt(document.getElementById('atendimentos').value);
+            const registros = parseInt(document.getElementById('registros').value);
+            const porcentagem = document.getElementById('porcentagem').innerText;
+            
+            const tabelaDiaria = document.getElementById('tabela-diaria');
+            const novaLinha = tabelaDiaria.insertRow();
+
+            novaLinha.innerHTML = <td>${dataAtual}</td><td>${atendimentos}</td><td>${registros}</td><td>${porcentagem}</td>;
+
+            document.getElementById('atendimentos').value = 0;
+            document.getElementById('registros').value = 0;
+            document.getElementById('porcentagem').innerText = '0%';
+            
+            atualizarHistoricoMensal(atendimentos, registros);
+        }
+
+        function atualizarHistoricoMensal(atendimentos, registros) {
+            const tabelaMensal = document.getElementById('tabela-mensal');
+            const mesAtual = new Date().toLocaleString('default', { month: 'long', year: 'numeric' });
+
+            let linhaExistente = Array.from(tabelaMensal.rows).find(row => row.cells[0].innerText === mesAtual);
+
+            if (linhaExistente) {
+                const celulas = linhaExistente.cells;
+                const totalAtendimentos = parseInt(celulas[1].innerText) + atendimentos;
+                const totalRegistros = parseInt(celulas[2].innerText) + registros;
+                const porcentagemMensal = ((totalRegistros / totalAtendimentos) * 100).toFixed(2) + '%';
+
+                celulas[1].innerText = totalAtendimentos;
+                celulas[2].innerText = totalRegistros;
+                celulas[3].innerText = porcentagemMensal;
+            } else {
+                const novaLinha = tabelaMensal.insertRow();
+                const porcentagemMensal = ((registros / atendimentos) * 100).toFixed(2) + '%';
+                novaLinha.innerHTML = <td>${mesAtual}</td><td>${atendimentos}</td><td>${registros}</td><td>${porcentagemMensal}</td>;
+            }
+        }
+
+        function limparTudo() {
+            document.getElementById('tabela-diaria').innerHTML = '';
+            document.getElementById('tabela-mensal').innerHTML = '';
+        }
     </script>
 </body>
 </html>
