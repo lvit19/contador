@@ -7,101 +7,106 @@
     <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" type="image/svg+xml">
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e2f;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            margin: 20px auto;
-            width: 50%;
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
-            text-align: center;
-        }
-        input {
-            width: 60px;
-            text-align: center;
-            font-size: 16px;
-            background-color: #2c2c2c;
-            color: #fff;
-            border: 1px solid #444;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #6a00ff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #5300d9;
-        }
-        .clear-button {
-            padding: 5px 10px;
-            font-size: 12px;
-            color: #bbb;
-            background-color: #333;
-            border: 1px solid #555;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .clear-button:hover {
-            background-color: #444;
-        }
-        .result span {
-            color: #fff;
-            font-weight: bold;
-        }
-        .historico {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            width: 50%;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            color: #ddd;
-        }
-        table th, table td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-        table th {
-            background-color: #292929;
-            font-weight: bold;
-        }
-        table tr:nth-child(even) {
-            background-color: #242424;
-        }
-        h1, h2 {
-            color: #fff;
-            size: 16px
-        }
-        h2 {
-            text-align: center;
-        }
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1e1e2f; /* Fundo escuro */
+        color: #f0f0f0; /* Texto claro */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container, .historico {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin: 30px auto;
+        width: 50%;
+        border: 1px solid #3c3c50; /* Bordas discretas */
+        border-radius: 10px;
+        background-color: #2c2c3e; /* Fundo de contêiner escuro */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+        text-align: center;
+    }
+
+    input {
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+        background-color: #3c3c50;
+        color: #f0f0f0;
+        border: 1px solid #5a5a7a;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #5c00e6; /* Roxo neon */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #8c00ff; /* Tom mais claro no hover */
+    }
+
+    .clear-button {
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #f0f0f0;
+        background-color: #5a5a7a;
+        border: 1px solid #5a5a7a;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .clear-button:hover {
+        background-color: #8c00ff; /* Neon no hover */
+    }
+
+    .result {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #f0f0f0; /* Texto em destaque */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 16px;
+        text-align: left;
+        background-color: #2c2c3e;
+        color: #f0f0f0;
+    }
+
+    table th, table td {
+        padding: 10px;
+        border: 1px solid #f9f9f9;
+    }
+
+    table th {
+        background-color: #3c3c50; /* Fundo escuro */
+        font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #353547; /* Alternância sutil */
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+        color: #fff; /* Títulos em roxo claro */
+    }
     </style>
 </head>
 <body>
