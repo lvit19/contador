@@ -153,7 +153,6 @@
     </div>
 
     <script>
-         // Função para calcular a porcentagem
         function calcularPorcentagem() {
             const atendimentos = parseInt(document.getElementById('atendimentos').value);
             const registros = parseInt(document.getElementById('registros').value);
@@ -187,7 +186,7 @@
             const tabelaDiaria = document.getElementById('tabela-diaria');
             const novaLinha = tabelaDiaria.insertRow();
 
-            novaLinha.innerHTML = <td>${dataAtual}</td><td>${atendimentos}</td><td>${registros}</td><td>${porcentagem}</td>;
+            novaLinha.innerHTML = `<td>${dataAtual}</td><td>${atendimentos}</td><td>${registros}</td><td>${porcentagem}</td>`;
 
             document.getElementById('atendimentos').value = 0;
             document.getElementById('registros').value = 0;
@@ -214,7 +213,7 @@
             } else {
                 const novaLinha = tabelaMensal.insertRow();
                 const porcentagemMensal = ((registros / atendimentos) * 100).toFixed(2) + '%';
-                novaLinha.innerHTML = <td>${mesAtual}</td><td>${atendimentos}</td><td>${registros}</td><td>${porcentagemMensal}</td>;
+                novaLinha.innerHTML = `<td>${mesAtual}</td><td>${atendimentos}</td><td>${registros}</td><td>${porcentagemMensal}</td>`;
             }
         }
 
